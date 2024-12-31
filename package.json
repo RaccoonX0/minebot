@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@huggingface/inference": "^2.8.1",
+    "http-proxy-agent": "^7.0.2",
+    "huggingface": "^1.4.0",
+    "mineflayer": "4.15",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
