@@ -1,11 +1,11 @@
 import {BlacklistPath, DeathsPath, ProxyPath} from "./config/cfg.js";
 import {readFileSync, writeFileSync} from "fs";
+import {startBans} from "./bot/ban/ban.js";
 import {MWBot} from "./bot/masedworld.js";
 import {randInt} from "./config/func.js";
 import {CMBot} from "./bot/cheatmine.js";
 import {MBBot} from "./bot/mineblaze.js";
 import {TBot} from "./tbot/bot.js";
-
 
 export let playerDeaths;
 export let blacklist;
@@ -13,7 +13,7 @@ export let botList = [];
 export const botsObjData = {
   "masedworld": {
     "s1": () => { return startBotMW({nickname: "VectorKemper1ng", portal: "s1"}) },
-    "s2": () => { return startBotMW({nickname: "KoTiK_B_KeDaH_", portal: "s2"}) }, // Kemper1ng
+    "s2": () => { return startBotMW({nickname: "Kemper1ng", portal: "s2"}) },
     "s3": () => { return startBotMW({nickname: "NeoKemper1ng", portal: "s3"}) },
     "s4": () => { return startBotMW({nickname: "SCPbotSH", portal: "s4"}) },
     "s5": () => { return startBotMW({nickname: "Alfhelm", portal: "s5"}) },
@@ -99,7 +99,7 @@ export function loadDeaths() {
 
 
 export function startBotMW(options = {
-  nickname: "KoTiK_B_KeDaH_", // Kemper1ng
+  nickname: "Kemper1ng",
   portal: "s2",
 }) {
   return new MWBot(options);
@@ -136,3 +136,4 @@ export function getRandomProxy() {
 
 
 export let tbot = new TBot();
+// startBans();

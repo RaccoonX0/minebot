@@ -66,24 +66,24 @@ export const ServerMenuKeyboard = [
       callback_data: "masedworld",
     },
   ],
-[
-  {
-    text: "🟫 CheatMine 🟫",
-    callback_data: "cheatmine",
-  },
-],
-[
-  {
-    text: "🟪 MineBlaze 🟪",
-    callback_data: "mineblaze",
-  },
-],
-[
-  {
-    text: "⬛ MultiPanel ⬛️",
-    callback_data: "multipanel",
-  },
-],
+// [
+//   {
+//     text: "🟫 CheatMine 🟫",
+//     callback_data: "cheatmine",
+//   },
+// ],
+// [
+//   {
+//     text: "🟪 MineBlaze 🟪",
+//     callback_data: "mineblaze",
+//   },
+// ],
+// [
+//   {
+//     text: "⬛ MultiPanel ⬛️",
+//     callback_data: "multipanel",
+//   },
+// ],
 ];
 
 export const PanelMenuKeyboard = [
