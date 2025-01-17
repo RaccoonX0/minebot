@@ -269,11 +269,11 @@ export class MainBot extends Base {
       const user = match[0][0];
       if (blacklist.includes(user) || (playerDeaths[user] && playerDeaths[user] > 4)) return this.sendMsg(`/c kick ${user}`);
       if (typeof playerDeaths[user] !== "number") playerDeaths[user] = 0;
-      this.sendMsg(`/cc Добро пожаловать в клан, ${user}! Обязательно вступи в наш дискорд, там много всего интересного! Если хочешь вступить в наш дискорд сервер, то пиши мне - kotik16f`);
+      this.sendMsg(`/cc Добро пожаловать в клан, ${user}! Обязательно вступи в наш дискорд, там много всего интересного! Если хочешь вступить в наш дискорд сервер, то пиши мне - @thatsboring_`);
     });
     
     this.bot.on("chat:leave", match => {
-      this.sendMsg(`/cc ${match[0][0]} выходит из клана, ОБОССАТЬ И НА МОРОЗ!`);
+      this.sendMsg(`/cc ${match[0][0]} выходит из клана, поймем но не простим!`);
     });
     
     this.bot.on("chat:cc", match => {
