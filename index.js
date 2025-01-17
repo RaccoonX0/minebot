@@ -72,20 +72,6 @@ export function startBotMW(options = {
 };
 
 
-export function startBotCM(options) {
-  options.nickname = options.nickname || "Tramp2024";
-  options.portal = options.portal || "s1";
-  return new CMBot(options);
-};
-
-
-export function startBotMB(options) {
-  options.nickname = options.nickname || "lohkgwg1";
-  options.portal = options.portal || "s1";
-  return new MBBot(options);
-};
-
-
 export function startByServer(server, portal,) {
   if (botsObjData?.[server]?.[portal] && typeof botsObjData[server][portal] === "function") return botsObjData[server][portal]();
   else {
