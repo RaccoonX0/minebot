@@ -7,17 +7,17 @@ export class Base extends EventEmitter {
   constructor() {
     super();
     this.answerMessages = {
-      "afterdar": unterMsgs["afterdark"],
-      "worte": unterMsgs["wortex"],
-      "goldligh": unterMsgs["goldlight"],
-      "blyyet": unterMsgs["blyyeti"],
-      "helltea": unterMsgs["hellteam"],
-      "krist": unterMsgs["kristl"],
+      //"afterdar": unterMsgs["afterdark"],
+      //"worte": unterMsgs["wortex"],
+      //"goldligh": unterMsgs["goldlight"],
+      //"blyyet": unterMsgs["blyyeti"],
+      //"helltea": unterMsgs["hellteam"],
+      //"krist": unterMsgs["kristl"],
       
       "#команды": commandsMsgs["commandList"],
       "#списокботов": commandsMsgs["botList"],
-      "#союзы": commandsMsgs["allies"],
-      "#враги": commandsMsgs["enemies"],
+      //"#союзы": commandsMsgs["allies"],
+      //"#враги": commandsMsgs["enemies"],
       "#функции": commandsMsgs["functions"],
       "#версиибота": commandsMsgs["versions"][parseInt(this.currentArg)],
       "бот": () => {
