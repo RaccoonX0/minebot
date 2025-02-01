@@ -1,6 +1,6 @@
-import {commandsMsgs, unterMsgs} from "../config/cfg.js";
+import {commandsMsgs} from "../config/cfg.js";
 import {EventEmitter} from "events";
-import {ai} from "../ai.js";
+// import {ai} from "../ai.js";
 
 
 export class Base extends EventEmitter {
@@ -21,14 +21,14 @@ export class Base extends EventEmitter {
       "#функции": commandsMsgs["functions"],
       "#версиибота": commandsMsgs["versions"][parseInt(this.currentArg)],
       "бот": () => {
-        const ask = this.allArgs.join(" ");
-        if (ask.trim() === "") return;
-        ai.getAnswer(ask, {
-          nickname: this.nickname,
-          portal: this.portal,
-          server: this.server,
-          player: this.lastUser,
-        }).then(() => {});
+        // const ask = this.allArgs.join(" ");
+        // if (ask.trim() === "") return;
+        // ai.getAnswer(ask, {
+        //   nickname: this.nickname,
+        //   portal: this.portal,
+        //   server: this.server,
+        //   player: this.lastUser,
+        // }).then(() => {});
       },
     };
 

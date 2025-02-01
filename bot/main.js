@@ -1,5 +1,5 @@
 import {admins, FreezeTrollMsg, PatternOptions, PublicName, PublicPassword, PublicSkin, PublicVersion, PublicWarp, PublicPlugins} from "../config/cfg.js";
-import {blacklist, playerDeaths, botList, saveBlacklist, saveDeaths, getRandomProxy, botsObj, tbot, startByServer} from "../index.js";
+import {blacklist, playerDeaths, botList, saveBlacklist, saveDeaths, getRandomProxy, botsObj, botsObjData, tbot, startBot} from "../index.js";
 import {appendFile, existsSync, mkdirSync, writeFileSync} from "fs";
 import {HttpProxyAgent} from "http-proxy-agent";
 import {randInt} from "../config/func.js";
@@ -37,7 +37,7 @@ export class MainBot extends Base {
     this.lastUser = "";
     this.currentArg = "";
     this.allArgs = [];
-    if (botsObj[this.server][this.portal]) return;
+    if (botsObj[this.portal]) return;
     this.botOptions = {
       username: this.nickname,
       host: this.host,
@@ -89,12 +89,12 @@ export class MainBot extends Base {
         this.end();
         this.bot = null;
       }
-      botsObj[this.server][this.portal] = null;
+      botsObj[this.portal] = null;
       if (reason === "Disabled by admin") return console.log(`${this.nickname} - Disconnection... (${reason})`);
       console.log(`${this.nickname} - Reconnection... (${reason})`);
-      botsObj[this.server][this.portal] = startByServer(this.server, this.portal);
+      botsObj[this.portal] = botsObjData[this.portal]();
     } catch (err) {
-      botsObj[this.server][this.portal] = startByServer(this.server, this.portal);
+      botsObj[this.portal] = botsObjData[this.portal]();
       console.log(err);
     }
   };
@@ -296,18 +296,19 @@ export class MainBot extends Base {
     processClanMessage(cmd) {
       if (cmd.startsWith("#")) {
         if (Object.keys(this.answerMessages).includes(cmd))this.sendMsg(this.answerMessages[cmd]);
-      } else if (cmd.includes("бот")) {
-        if (typeof this.answerMessages[cmd] === "function") {
-          if (ai.canAnswer) {
-            this.sendMsg("/cc Генерирую ответ...");
-            this.answerMessages["бот"]();
-            ai.canAnswer = false;
-            return;
-          }
-          this.sendMsg("/cc Бот занят, попробуйте через пару секунд.");
-          return;
-        }
       }
+      // else if (cmd.includes("бот")) {
+      //   if (typeof this.answerMessages[cmd] === "function") {
+      //     if (ai.canAnswer) {
+      //       this.sendMsg("/cc Генерирую ответ...");
+      //       this.answerMessages["бот"]();
+      //       ai.canAnswer = false;
+      //       return;
+      //     }
+      //     this.sendMsg("/cc Бот занят, попробуйте через пару секунд.");
+      //     return;
+      //   }
+      // }
     };
     
     processCommandMessage(username, command) {
@@ -325,16 +326,16 @@ export class MainBot extends Base {
     };
     
     enableLog() {
-      this.on("chatlog", (message) => {
-        try {
-          tbot.emit("log", `[${this.portal}] [${new Date().toLocaleString()}] ${message}`, this.portal)
-        } catch (err) {}
-      });
+      // this.on("chatlog", (message) => {
+      //   try {
+      //     tbot.emit("log", `[${this.portal}] [${new Date().toLocaleString()}] ${message}`, this.portal)
+      //   } catch (err) {}
+      // });
     };
     
     disableLog() {
-      try {
-        this.removeListener("chatlog", () => {});
-      } catch (err) {}
+      // try {
+      //   this.removeListener("chatlog", () => {});
+      // } catch (err) {}
     };
 }

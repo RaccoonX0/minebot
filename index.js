@@ -1,6 +1,5 @@
 import {BlacklistPath, DeathsPath, ProxyPath} from "./config/cfg.js";
 import {readFileSync, writeFileSync} from "fs";
-import {startBans} from "./bot/ban/ban.js";
 import {MWBot} from "./bot/masedworld.js";
 import {randInt} from "./config/func.js";
 import {TBot} from "./tbot/bot.js";
@@ -9,28 +8,24 @@ export let playerDeaths;
 export let blacklist;
 export let botList = [];
 export const botsObjData = {
-  "masedworld": {
-    "s1": () => { return startBotMW({nickname: "VectorKemper1ng", portal: "s1"}) },
-    "s2": () => { return startBotMW({nickname: "Kemper1ng", portal: "s2"}) },
-    "s3": () => { return startBotMW({nickname: "NeoKemper1ng", portal: "s3"}) },
-    "s4": () => { return startBotMW({nickname: "SCPbotSH", portal: "s4"}) },
-    "s5": () => { return startBotMW({nickname: "Alfhelm", portal: "s5"}) },
-    "s6": () => { return startBotMW({nickname: "QuaKemper1ng", portal: "s6"}) },
-    "s7": () => { return startBotMW({nickname: "AntiKemper1ng", portal: "s7"}) },
-    "s8": () => { return startBotMW({nickname: "Temper1ng", portal: "s8"}) },
-  },
+  "s1": () => { return startBot({nickname: "VectorKemper1ng", portal: "s1"}) },
+  "s2": () => { return startBot({nickname: "Kemper1ng", portal: "s2"}) },
+  "s3": () => { return startBot({nickname: "NeoKemper1ng", portal: "s3"}) },
+  "s4": () => { return startBot({nickname: "SCPbotSH", portal: "s4"}) },
+  "s5": () => { return startBot({nickname: "Alfhelm", portal: "s5"}) },
+  "s6": () => { return startBot({nickname: "QuaKemper1ng", portal: "s6"}) },
+  "s7": () => { return startBot({nickname: "AntiKemper1ng", portal: "s7"}) },
+  "s8": () => { return startBot({nickname: "Temper1ng", portal: "s8"}) },
 };
 export let botsObj = {
-  "masedworld": {
-    "s1": null,
-    "s2": null,
-    "s3": null,
-    "s4": null,
-    "s5": null,
-    "s6": null,
-    "s7": null,
-    "s8": null,
-  },
+  "s1": null,
+  "s2": null,
+  "s3": null,
+  "s4": null,
+  "s5": null,
+  "s6": null,
+  "s7": null,
+  "s8": null,
 };
 loadBlacklist();
 loadDeaths();
@@ -64,20 +59,11 @@ export function loadDeaths() {
 };
 
 
-export function startBotMW(options = {
+export function startBot(options = {
   nickname: "Kemper1ng",
   portal: "s2",
 }) {
   return new MWBot(options);
-};
-
-
-export function startByServer(server, portal,) {
-  if (botsObjData?.[server]?.[portal] && typeof botsObjData[server][portal] === "function") return botsObjData[server][portal]();
-  else {
-    console.log(server, portal);
-    return null;
-  }
 };
 
 
@@ -88,4 +74,3 @@ export function getRandomProxy() {
 
 
 export let tbot = new TBot();
-// startBans();
